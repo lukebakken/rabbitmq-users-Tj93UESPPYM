@@ -4,7 +4,7 @@
 127.0.0.2	shostakovich2
 127.0.0.3	shostakovich3
 127.0.0.4	shostakovich4
-``
+```
 
 ## Start RMQ
 
@@ -23,4 +23,22 @@ RABBITMQ_ALLOW_INPUT=true RABBITMQ_NODENAME='rabbit4@shostakovich4' RABBITMQ_NOD
 ./sbin/rabbitmqctl -n rabbit3@shostakovich3 stop_app; ./sbin/rabbitmqctl -n rabbit3@shostakovich3 join_cluster rabbit2@shostakovich2; ./sbin/rabbitmqctl -n rabbit3@shostakovich3 start_app; ./sbin/rabbitmqctl -n rabbit2@shostakovich2 cluster_status
 
 ./sbin/rabbitmqctl -n rabbit4@shostakovich4 stop_app; ./sbin/rabbitmqctl -n rabbit4@shostakovich4 join_cluster rabbit2@shostakovich2; ./sbin/rabbitmqctl -n rabbit4@shostakovich4 start_app; ./sbin/rabbitmqctl -n rabbit2@shostakovich2 cluster_status
+```
+
+## Setup queues and messages
+
+```
+./setup-env.sh
+```
+
+## Create partition
+
+```
+sudo nft -f ./nft-block-rabbit2.conf
+```
+
+## Heal partition
+
+```
+sudo nft -f ./nft-accept-all.conf
 ```
