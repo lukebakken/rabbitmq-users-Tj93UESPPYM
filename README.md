@@ -6,6 +6,12 @@
 127.0.0.4	shostakovich4
 ```
 
+## Setup loopback IP addresses
+
+```
+sudo ./setup-loopback.sh
+```
+
 ## Start RMQ
 
 ```
